@@ -1,13 +1,14 @@
 <h1>PACIENTE - FORMULÁRIO</h1>
-<form action="" FormGroup>
-
-    <div>
-        <p>Nome do Paciente</p>
-        <input id="nomePacienteId" type="text" placeholder="Insira o nome completo"/>
-        <p>CPF</p>
-        <input id="cpfId" type="text" placeholder="Insira o CPF"/>
-        <p>Data de Nascimento</p>
-        <input id="dataNascimentoId" type="date" placeholder="Insira a data de nascimento"/>
+<form [formGroup]="formulario">
+    <div >
+        <label >Nome do Paciente: </label>
+        <input formControlName="nome" id="idNome" type="text" placeholder="Insira o nome completo"/>
+        <br/>
+        <label>CPF: </label>
+        <input formControlName="cpf" id="idCpf" type="text" placeholder="Insira o CPF"/>
+        <br/>
+        <label>Data de Nascimento: </label>
+        <input formControlName="dataNascimento" id="idDataNascimento" type="date" placeholder="Insira a data de nascimento"/>
     </div>
 
     <div>
