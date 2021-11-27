@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ListagemRoutingModule } from './listagem-routing.module';
 import { ListagemComponent } from './listagem.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ListagemComponent } from './listagem.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ListagemRoutingModule
   ]
 })

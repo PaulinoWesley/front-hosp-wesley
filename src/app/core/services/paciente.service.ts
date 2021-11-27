@@ -45,5 +45,4 @@ export class PacienteService {
       .get<Paciente[]>(`${this.baseUrl}`, {params: httpParams})
       .pipe(map((pacientes: Paciente[]) => pacientes.map((p: Paciente) => new Paciente(p))));
   }
-  
 }
