@@ -12,7 +12,7 @@ export class ListagemService {
     private pacienteService: PacienteService
   ) { }
 
-  public listar(paciente: Paciente): Observable<Paciente[]> {
+  public buscar(paciente: Paciente): Observable<Paciente[]> {
     return this.pacienteService.buscar(paciente);
   }
 }

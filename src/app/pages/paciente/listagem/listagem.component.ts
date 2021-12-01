@@ -30,9 +30,16 @@ export class ListagemComponent implements OnInit {
     });
   };
 
-  public pesquisarPorNomeCpfOuDataNascimento(): void {
+  public pesquisar(): void {
     const paciente = new Paciente(this.formulario.value);
-    //this.service.listar()
+    this.service
+            .buscar(paciente)
+            .subscribe((pacientes: Paciente[]) => {this.pacientes = pacientes});
+  }
+
+  public limpar(): void {
+    this.formulario.reset();
+    this.pacientes = new Array<Paciente>();
   }
 
   public get ehListagemVisivel(): boolean {

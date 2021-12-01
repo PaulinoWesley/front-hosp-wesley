@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Paciente } from '@entities';
+import { Medico } from '@entities';
 import { FormularioService } from './formulario.service';
 
 @Component({
@@ -10,12 +10,12 @@ import { FormularioService } from './formulario.service';
 })
 export class FormularioComponent implements OnInit {
   public formulario: FormGroup = new FormGroup({});
-  public paciente?: Paciente[];
-  
+  public medico?: Medico[];
+
   constructor(
-    private service: FormularioService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private service: FormularioService
+    ) { }
 
   ngOnInit(): void {
     this.criarFormulario();
@@ -24,17 +24,15 @@ export class FormularioComponent implements OnInit {
   private criarFormulario(): void {
     this.formulario = this.formBuilder.group({
       nome: null,
-      cpf: null,
-      dataNascimento: null,
-    });
-  };
-
-  public enviar(): void {
-    const paciente =  new Paciente(this.formulario.value);
-
-    this.service.salvar(paciente).subscribe((pacienteSalvo: Paciente) => {
-      alert(`Paciente salvo com sucesso!! nome = ${pacienteSalvo.primeiroNome} cpf = ${pacienteSalvo.cpf}`); 
-    });
+      crm: null
+    })
   }
 
+  public enviar(): void {
+    const medico = new Medico(this.formulario.value);
+
+    this.service.salvar(medico).subscribe((medicoSalvo: Medico) => {
+      alert(`O médico: ${medicoSalvo.primeiroNome} com número CRM: ${medicoSalvo.crm} foi salvo com sucesso`);
+    })
+  }
 }
