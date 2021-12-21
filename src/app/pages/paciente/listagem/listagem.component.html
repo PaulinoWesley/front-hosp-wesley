@@ -1,7 +1,7 @@
-<div style="width: 100%;">
+<div class="container">
     <form [formGroup]="formulario">
-
-        <div style="width: 90%;">
+        <div class="row">
+            <!-- TODO: mudar pra uma coisa melhor -->
             <h2>Pesquisa</h2>
             <div>
                 <label>Nome</label>
@@ -28,11 +28,11 @@
     <table style="width: 90%" *ngIf="ehListagemVisivel">
         <thead>
             <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Apagar</th>
             </tr>
         </thead>
         <tbody>    

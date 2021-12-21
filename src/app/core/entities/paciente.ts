@@ -33,5 +33,6 @@ export class Paciente {
             init.dataNascimento = new Date(init.dataNascimento);
         }
         Object.assign(this, init);
+
     }
 }

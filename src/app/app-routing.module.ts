@@ -9,6 +9,11 @@ const routes: Routes = [
   {
     path: 'paciente/formulario/:cpf',
     loadChildren: () => import('./pages/paciente/formulario/formulario.module').then(m => m.FormularioModule)
+  },
+  {
+    path: 'medico/formulario',
+    loadChildren: () => import('./pages/medico/formulario/formulario.module').then(m => m.FormularioModule)
+
   }
 ];
 

@@ -1,0 +1,14 @@
+<h1>MÉDICO - FORMULÁRIO</h1>
+<form [formGroup]="formulario">
+    <div >
+        <label >Nome do Médico: </label>
+        <input formControlName="nome" id="idNome" type="text" placeholder="Insira o nome completo"/>
+        <br/>
+        <label>CRM: </label>
+        <input formControlName="cpf" id="idCpf" type="text" placeholder="Insira o CPF"/>
+    </div>
+
+    <div>
+        <button type="button" (click)="enviar()">Enviar</button>
+    </div>
+</form>

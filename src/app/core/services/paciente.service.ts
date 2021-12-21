@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Paciente } from '@entities';
-import { map, Observable, take } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class PacienteService {
   public criar(paciente: Paciente): Observable<Paciente> {
     return this.httpClient
               .post<Paciente>(this.baseUrl, paciente)
-              .pipe(map((p: Paciente) => new Paciente(p)));;
+              .pipe(map((p: Paciente) => new Paciente(p)));
   }
 
   public atualizar(paciente: Paciente): Observable<Paciente> {
@@ -42,7 +42,7 @@ export class PacienteService {
     if (paciente.cpf)
       httpParams = httpParams.append('cpf', paciente.cpf);
     if (paciente.dataNascimento)
-      httpParams = httpParams.append('dataNascimento', paciente.dataNascimento.toJSON());
+      httpParams = httpParams.append('dataNascimento', paciente.dataNascimentoJson);
     if (paciente.nome)
       httpParams = httpParams.append('nome', paciente.nome);
     
