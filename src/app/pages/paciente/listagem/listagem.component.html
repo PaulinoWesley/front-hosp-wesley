@@ -5,25 +5,28 @@
             <h2>Pesquisa</h2>
             <div>
                 <label>Nome</label>
-                <input type="text" id="nome" />
+                <input type="text" id="nome" formControlName="nome"/>
             </div>
+            <br>
             <div>
                 <label>CPF</label>
-                <input type="text" id="cpf" />
+                <input type="text" id="cpf" formControlName="cpf"/>
             </div>
+            <br>
             <div>
                 <label>Data de Nascimento</label>
-                <input type="date" id="dataNascimento">
+                <input type="date" id="dataNascimento" formControlName="dataNascimento">
             </div>
         </div>
 
         <div>
-            <button id="btnPesquisar" (click)="pesquisarPorNomeCpfOuDataNascimento()">Pesquisar</button>
+            <button id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
+            <button id="btnLimpar" (click)="limpar()">Limpar</button>
         </div>
     </form>
 
-    <div *ngIf="ehListagemVisivel">
-        <table style="width: 90%">
+    <table style="width: 90%" *ngIf="ehListagemVisivel">
+        <thead>
             <tr>
                 <th>CPF</th>
                 <th>Nome</th>
@@ -31,14 +34,15 @@
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
+        </thead>
+        <tbody>    
             <tr *ngFor="let paciente of pacientes">
                 <th>{{ paciente.cpf }}</th>
-                <th>{{ paciente.nome }}</th>
-                <th>{{ paciente.dataNascimento }}</th>
-                <th><button>Atualizar</button></th>
-                <th><button>Deletar</button></th>
+                <td>{{ paciente.nome }}</td>
+                <td>{{ paciente.dataNascimento | date: 'dd/MM/YYYY'}}</td>
+                <td><button (click)="editar(paciente)">Atualizar</button></td>
+                <td><button>Deletar</button></td>
             </tr>
-
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>

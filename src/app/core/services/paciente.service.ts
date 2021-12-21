@@ -21,8 +21,13 @@ export class PacienteService {
   }
 
   public atualizar(paciente: Paciente): Observable<Paciente> {
+    const pacienteParaSalvar = {
+      nome: paciente.nome,
+      cpf: paciente.cpf,
+      dataNascimento: paciente.dataNascimentoJson
+    }
     return this.httpClient
-              .put<Paciente>(this.baseUrl, paciente)
+              .put<Paciente>(this.baseUrl, pacienteParaSalvar)
               .pipe(map((p: Paciente) => new Paciente(p)));;
   }
 

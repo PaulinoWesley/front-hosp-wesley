@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/paciente/listagem/listagem.module').then(m => m.ListagemModule)
   },
   {
-    path: 'paciente/formulario',
+    path: 'paciente/formulario/:cpf',
     loadChildren: () => import('./pages/paciente/formulario/formulario.module').then(m => m.FormularioModule)
   }
 ];
