@@ -13,7 +13,17 @@ export class FormularioService {
     private medicoService: MedicoService
   ) { }
 
-  public salvar(medico: Medico): Observable<Medico> {
+  public salvar(medico: Medico, ehEdicao = false): Observable<Medico> {
+    if (ehEdicao)
+      return this.atualizar(medico);
+    return this.criar(medico);
+  }
+
+  private criar(medico: Medico): Observable<Medico> {
     return this.medicoService.criar(medico);
+  }
+
+  private atualizar(medico: Medico): Observable<Medico> {
+    return this.medicoService.atualizar(medico);
   }
 }

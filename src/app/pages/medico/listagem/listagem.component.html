@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="formulario">
+        <div class="row">
+            <h2>Pesquisa</h2>
+            <div>
+                <label>Nome</label>
+                <input type="text" id="nome" formControlName="nome"/>
+            </div>
+            <br>
+            <div>
+                <label>CRM</label>
+                <input type="text" id="crm" formControlName="crm"/>
+            </div>
+            <br>
+        </div>
+
+        <div>
+            <button id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
+            <button id="btnLimpar" (click)="limpar()">Limpar</button>
+        </div>
+    </form>
+
+    <table style="width: 90%" *ngIf="ehListagemVisivel">
+        <thead>
+            <tr>
+                <th scope="col">CRM</th>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody>    
+            <tr *ngFor="let medico of medicos">
+                <th>{{ medico.crm }}</th>
+                <td>{{ medico.nome }}</td>
+                <td><button (click)="editar(medico)">Atualizar</button></td>
+                <td><button>Deletar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
