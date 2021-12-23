@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/paciente/listagem/listagem.module').then(m => m.ListagemModule)
   },
   {
-    path: 'paciente/formulario/:cpf',
+    path: 'paciente/formulario',
     loadChildren: () => import('./pages/paciente/formulario/formulario.module').then(m => m.FormularioModule)
   },
   {
@@ -15,9 +15,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/medico/listagem/listagem.module').then(m => m.ListagemModule)
   },
   {
-    path: 'medico/formulario/:crm',
+    path: 'medico/formulario',
     loadChildren: () => import('./pages/medico/formulario/formulario.module').then(m => m.FormularioModule)
-
   }
 ];
 

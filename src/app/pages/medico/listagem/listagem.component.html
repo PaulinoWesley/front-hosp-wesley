@@ -32,7 +32,7 @@
                 <th>{{ medico.crm }}</th>
                 <td>{{ medico.nome }}</td>
                 <td><button (click)="editar(medico)">Atualizar</button></td>
-                <td><button>Deletar</button></td>
+                <td><button (click)="deletar(medico)"> Deletar</button></td>
             </tr>
         </tbody>
     </table>

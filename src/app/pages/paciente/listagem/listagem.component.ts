@@ -16,7 +16,7 @@ export class ListagemComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: ListagemService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.criarFormulario();
@@ -41,13 +41,21 @@ export class ListagemComponent implements OnInit {
     return !!this.pacientes && this.pacientes.length != 0;
   }
 
-  public editar(paciente: Paciente):void {
+  public editar(paciente: Paciente): void {
     this.service.editar(paciente);
   }
 
   public limpar(): void {
     this.formulario.reset();
     this.pacientes = new Array<Paciente>();
+  }
+
+  public deletar(paciente: Paciente): void {
+    this.service.deletar(paciente)
+      .subscribe((pacienteDeletado: Paciente) => {
+        this.pesquisar();
+        alert('Paciente deletado com sucesso');
+      });
   }
 
 }

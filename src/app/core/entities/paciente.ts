@@ -28,6 +28,14 @@ export class Paciente {
         return '';
     }
 
+    public toJSON() {
+        return {
+            nome: this.nome,
+            cpf: this.cpf,
+            dataNascimento: this.dataNascimentoJson,
+        }
+    }
+
     constructor(init?: Partial<Paciente>){
         if(init?.dataNascimento) {
             init.dataNascimento = new Date(init.dataNascimento);

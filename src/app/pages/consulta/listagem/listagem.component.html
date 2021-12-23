@@ -1,0 +1,41 @@
+<div class="container">
+    <form [formGroup]="formulario">
+        <div class="row">
+            <h2>Pesquisa</h2>
+            <div>
+                <label>Paciente</label>
+                <input type="text" id="paciente" formControlName="nomePaciente"/>
+            </div>
+            <br>
+            <div>
+                <label>Médico</label>
+                <input type="text" id="medico" formControlName="nomeMedico"/>
+            </div>
+            <br>
+        </div>
+
+        <div>
+            <button id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
+            <button id="btnLimpar" (click)="limpar()">Limpar</button>
+        </div>
+    </form>
+
+    <table style="width: 90%" *ngIf="ehListagemVisivel">
+        <thead>
+            <tr>
+                <th scope="col">Medico</th>
+                <th scope="col">Paciente</th>
+                <th scope="col">Horario Consulta</th>
+            </tr>
+        </thead>
+        <tbody>    
+            <tr *ngFor="let consulta of consultas">
+                <th>{{ consulta.nomeMedico }}</th>
+                <td>{{ consulta.nomePaciente }}</td>
+                <td>{{ consulta.horarioConsulta }}</td>
+                <td><button (click)="editar(consulta)">Atualizar</button></td>
+                <td><button (click)="deletar(consulta)"> Deletar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

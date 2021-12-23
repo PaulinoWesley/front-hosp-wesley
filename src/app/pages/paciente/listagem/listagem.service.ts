@@ -21,4 +21,8 @@ export class ListagemService {
     public editar(paciente: Paciente): void {
       this.router.navigate(['/paciente/formulario', paciente.cpf]);
     }
+
+    public deletar(paciente: Paciente): Observable<Paciente> {
+      return this.pacienteService.deletar(paciente.cpf);
+    }
 }

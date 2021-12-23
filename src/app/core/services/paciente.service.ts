@@ -21,13 +21,8 @@ export class PacienteService {
   }
 
   public atualizar(paciente: Paciente): Observable<Paciente> {
-    const pacienteParaSalvar = {
-      nome: paciente.nome,
-      cpf: paciente.cpf,
-      dataNascimento: paciente.dataNascimentoJson
-    }
     return this.httpClient
-              .put<Paciente>(this.baseUrl, pacienteParaSalvar)
+              .put<Paciente>(this.baseUrl, paciente)
               .pipe(map((p: Paciente) => new Paciente(p)));;
   }
 
@@ -49,5 +44,11 @@ export class PacienteService {
     return this.httpClient
       .get<Paciente[]>(`${this.baseUrl}`, {params: httpParams})
       .pipe(map((pacientes: Paciente[]) => pacientes.map((p: Paciente) => new Paciente(p))));
+  }
+
+  public deletar(cpf: string): Observable<Paciente> {
+    return this.httpClient
+      .delete<Paciente>(`${this.baseUrl}/${cpf}`)
+      .pipe(map((paciente: Paciente) => paciente));
   }
 }

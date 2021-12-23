@@ -41,7 +41,7 @@
                 <td>{{ paciente.nome }}</td>
                 <td>{{ paciente.dataNascimento | date: 'dd/MM/YYYY'}}</td>
                 <td><button (click)="editar(paciente)">Atualizar</button></td>
-                <td><button>Deletar</button></td>
+                <td><button (click)="deletar(paciente)">Deletar</button></td>
             </tr>
         </tbody>
     </table>

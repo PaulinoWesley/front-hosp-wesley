@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Medico } from '@entities';
+import { Observable } from 'rxjs';
 import { ListagemService } from './listagem.service';
 
 @Component({
@@ -50,5 +51,13 @@ export class ListagemComponent implements OnInit {
   public limpar(): void {
     this.formulario.reset();
     this.medicos = new Array<Medico>();
+  }
+
+  public deletar(medico: Medico): void {
+    this.service.deletar(medico)
+      .subscribe((medicoDeletado: Medico)=> {
+        alert('Medico deletado com sucesso!');
+        this.pesquisar();
+      })
   }
 }

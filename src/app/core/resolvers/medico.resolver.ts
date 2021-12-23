@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Medico } from "../entities/medico";
 import { MedicoService } from "../services/medico.service ";
 
@@ -10,7 +10,6 @@ export class MedicoResolver implements Resolve<Observable<Medico>> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Medico> {
         const crm: string = route.params['crm'];
-
         return this.service.buscarPorCrm(crm);
     }
 }

@@ -43,4 +43,10 @@ export class MedicoService {
       .get<Medico[]>(`${this.baseUrl}`, {params: httpParams})
       .pipe(map((medicos: Medico[]) => medicos.map((m: Medico) => new Medico(m))));
   }
+
+  public deletar(crm: String): Observable<Medico> {
+    return this.httpClient
+      .delete<Medico>(`${this.baseUrl}/${crm}`)
+      .pipe(map((medico: Medico) => medico));
+  }
 }
