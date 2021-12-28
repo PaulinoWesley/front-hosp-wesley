@@ -16,6 +16,13 @@ export class Medico {
         return '';
     }
 
+    public toJSON(){
+        return {
+            nome: this.nome,
+            crm: this.crm
+        }
+    }
+
     constructor(init?: Partial<Medico>) {
         Object.assign(this, init);
     }

@@ -30,8 +30,8 @@
         </thead>
         <tbody>    
             <tr *ngFor="let consulta of consultas">
-                <th>{{ consulta.nomeMedico }}</th>
-                <td>{{ consulta.nomePaciente }}</td>
+                <th>{{ consulta.medico.nome }}</th>
+                <td>{{ consulta.paciente.cpf + '-' + consulta.paciente.nome }}</td>
                 <td>{{ consulta.horarioConsulta }}</td>
                 <td><button (click)="editar(consulta)">Atualizar</button></td>
                 <td><button (click)="deletar(consulta)"> Deletar</button></td>

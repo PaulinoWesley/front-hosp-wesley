@@ -17,6 +17,14 @@ const routes: Routes = [
   {
     path: 'medico/formulario',
     loadChildren: () => import('./pages/medico/formulario/formulario.module').then(m => m.FormularioModule)
+  },
+  {
+    path: 'consultas',
+    loadChildren: () => import('./pages/consulta/listagem/listagem.module').then(m => m.ListagemModule)
+  },
+  {
+    path: 'consultas/formulario',
+    loadChildren: () => import('./pages/consulta/formulario/formulario.module').then(m => m.FormularioModule)
   }
 ];
 

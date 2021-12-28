@@ -1,36 +1,10 @@
+import { Medico, Paciente } from "@entities";
+
 export class Consulta {
-    nomePaciente!: string;
-    nomeMedico!: string;
+    id!: number;
+    medico!: Medico;
+    paciente!: Paciente;
     horarioConsulta!: Date;
-
-
-    public get primeiroNomePaciente(): string {
-        const nomeSeparado = this.nomePaciente.trim().split(' ')
-        if (nomeSeparado.length > 0)
-            return nomeSeparado[0]
-        return '';
-    }
-
-    public get sobrenomePaciente(): string {
-        const nomeSeparado = this.nomePaciente.trim().split(' ')
-        if (nomeSeparado.length > 1)
-            return nomeSeparado[nomeSeparado.length - 1]
-        return '';
-    }
-
-    public get primeiroNomeMedico(): string {
-        const nomeSeparado = this.nomeMedico.trim().split(' ')
-        if (nomeSeparado.length > 0)
-            return nomeSeparado[0]
-        return '';
-    }
-
-    public get sobrenomeMedico(): string {
-        const nomeSeparado = this.nomeMedico.trim().split(' ')
-        if (nomeSeparado.length > 1)
-            return nomeSeparado[nomeSeparado.length - 1]
-        return '';
-    }
 
     public get horarioConsultaJson(): string {
         const horarioConsulta = this.horarioConsulta;
@@ -45,8 +19,8 @@ export class Consulta {
 
     public toJSON() {
         return {
-            nomePaciente: this.nomePaciente,
-            nomeMedico: this.nomeMedico,
+            medico: this.medico.toJSON(),
+            paciente: this.paciente.toJSON(),
             horarioConsulta: this.horarioConsultaJson,
         }
     }

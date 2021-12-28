@@ -1,1 +1,17 @@
-<p>formulario works!</p>
+<h1>CONSULTA - FORMULÁRIO</h1>
+<form [formGroup]="formulario">
+    <div >
+        <label >CRM: </label>
+        <input formControlName="crm" id="idCrm" type="text" placeholder="Insira o CRM do Médico"/>
+        <br/>
+        <label>CPF: </label>
+        <input formControlName="cpf" id="idCpf" type="text" placeholder="Insira o CPF do Cliente"/>
+        <label>HORARIO DE AGENDAMENTO: </label>
+        <input formControlName="horarioConsulta" id="idHorarioCOnsulta" type="" placeholder="Insira o Horario da Consulta"/>
+    </div>
+
+    <div>
+        <button type="button" (click)="enviar()">Enviar</button>
+        <button type="button" (click)="limpar()">Limpar</button>
+    </div>
+</form>

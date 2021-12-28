@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable, of } from "rxjs";
-import { Medico } from "../entities/medico";
-import { MedicoService } from "../services/medico.service ";
+import { Medico } from "@entities";
+import { MedicoService } from "@services";
+
 
 @Injectable({ providedIn: 'root' })
 export class MedicoResolver implements Resolve<Observable<Medico>> {
