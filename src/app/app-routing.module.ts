@@ -19,11 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/medico/formulario/formulario.module').then(m => m.FormularioModule)
   },
   {
-    path: 'consultas',
+    path: 'consulta',
     loadChildren: () => import('./pages/consulta/listagem/listagem.module').then(m => m.ListagemModule)
   },
   {
-    path: 'consultas/formulario',
+    path: 'consulta/formulario',
     loadChildren: () => import('./pages/consulta/formulario/formulario.module').then(m => m.FormularioModule)
   }
 ];

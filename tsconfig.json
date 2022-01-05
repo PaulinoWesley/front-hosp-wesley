@@ -25,6 +25,7 @@
     "paths": {
       "@entities": ["src/app/core/entities"],
       "@services": ["src/app/core/services"],
+      "@dtos": ["src/app/core/dtos"]
     }
   },
   "angularCompilerOptions": {

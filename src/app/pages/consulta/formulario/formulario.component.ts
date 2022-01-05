@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consulta } from '@entities';
+import { ConsultaSalvarDto } from 'src/app/core/dtos/consulta-salvar.dto';
 import { FormularioService } from './formulario.service';
 
 @Component({
@@ -15,11 +16,13 @@ export class FormularioComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: FormularioService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.criarFormulario();
+    this.carregarConsultaSelecionada();
   }
 
   private criarFormulario(): void {
@@ -31,9 +34,9 @@ export class FormularioComponent implements OnInit {
   }
 
   public enviar(): void {
-    const consulta = new Consulta(this.formulario.value)
+    const consultaParaSalvarDto = new ConsultaSalvarDto(this.formulario.value)
 
-    this.service.salvar(consulta, this.ehEdicao).subscribe((consultaSalva: Consulta) => {
+    this.service.salvar(consultaParaSalvarDto, this.ehEdicao).subscribe((consultaSalva: Consulta) => {
       alert(`A Consulta foi salva`);
       consultaSalva;
       this.router.navigate(['/consulta']);
@@ -46,6 +49,21 @@ export class FormularioComponent implements OnInit {
 
   public get ehEdicao(): boolean {
     return !!(this.consulta && this.consulta.id);
+  }
+
+  public carregarConsultaSelecionada(): void {
+    const consultaSelecionada = this.route.snapshot.data['consulta'];
+
+    if (consultaSelecionada && consultaSelecionada.id) {
+      this.consulta = consultaSelecionada;
+      this.patchConsultaToFormulario();
+    }
+  }
+
+  private patchConsultaToFormulario() {
+    this.formulario.get('cpf')?.setValue(this.consulta.paciente.cpf);
+    this.formulario.get('crm')?.setValue(this.consulta.medico.crm);
+    this.formulario.get('horarioConsulta')?.setValue(this.consulta.horarioConsultaFormatado);
   }
 
 }

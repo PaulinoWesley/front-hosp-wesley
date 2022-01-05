@@ -44,7 +44,6 @@ export class ListagemComponent implements OnInit {
   }
 
   public editar(medico: Medico) {
-    console.log(medico)
     this.service.editar(medico);
   }
 

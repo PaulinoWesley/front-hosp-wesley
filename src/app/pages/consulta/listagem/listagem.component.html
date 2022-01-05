@@ -4,12 +4,12 @@
             <h2>Pesquisa</h2>
             <div>
                 <label>Paciente</label>
-                <input type="text" id="paciente" formControlName="nomePaciente"/>
+                <input type="text" id="paciente" formControlName="cpfPaciente"/>
             </div>
             <br>
             <div>
                 <label>Médico</label>
-                <input type="text" id="medico" formControlName="nomeMedico"/>
+                <input type="text" id="medico" formControlName="crmMedico"/>
             </div>
             <br>
         </div>
@@ -31,7 +31,7 @@
         <tbody>    
             <tr *ngFor="let consulta of consultas">
                 <th>{{ consulta.medico.nome }}</th>
-                <td>{{ consulta.paciente.cpf + '-' + consulta.paciente.nome }}</td>
+                <td>{{ consulta.paciente.cpf + ' - ' + consulta.paciente.nome }}</td>
                 <td>{{ consulta.horarioConsulta }}</td>
                 <td><button (click)="editar(consulta)">Atualizar</button></td>
                 <td><button (click)="deletar(consulta)"> Deletar</button></td>
