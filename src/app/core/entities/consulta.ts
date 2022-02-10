@@ -11,7 +11,7 @@ export class Consulta {
 
     public get horarioConsultaFormatado(): string {
         const horarioConsulta = this.horarioConsulta ?? new Date();
-        return moment(horarioConsulta).format('YYYY-MM-DDThh:mm');
+        return moment(horarioConsulta).format('YYYY-MM-DDThh:mm:ss');
     }
 
     public toJSON() {

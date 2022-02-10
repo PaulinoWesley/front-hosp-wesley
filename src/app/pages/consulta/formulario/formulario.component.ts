@@ -38,7 +38,6 @@ export class FormularioComponent implements OnInit {
 
     this.service.salvar(consultaParaSalvarDto, this.ehEdicao).subscribe((consultaSalva: Consulta) => {
       alert(`A Consulta foi salva`);
-      consultaSalva;
       this.router.navigate(['/consulta']);
     });
   }

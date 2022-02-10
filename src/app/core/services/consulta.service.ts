@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Consulta } from '@entities';
 import { environment } from 'src/environments/environment';
-import { ConsultaFilterDto } from '../dtos';
+import { ConsultaFilterDto, ConsultaSalvarDto } from '../dtos';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,27 @@ export class ConsultaService {
   { }
 
   public criar(consulta: Consulta): Observable<Consulta> {
+    var dto = new ConsultaSalvarDto({
+      crm: consulta.medico.crm, 
+      cpf: consulta.paciente.cpf, 
+      horarioConsulta: consulta.horarioConsulta
+    });
+
     return this.httpClient
-              .post<Consulta>(this.baseUrl, consulta)
+              .post<Consulta>(this.baseUrl, dto.toJSON())
               .pipe(map((c: Consulta) => new Consulta(c)));
   }
 
   public atualizar(consulta: Consulta): Observable<Consulta> {
+    console.log("VAI ATUALIZAR");
+    var dto = new ConsultaSalvarDto({
+      crm: consulta.medico.crm, 
+      cpf: consulta.paciente.cpf, 
+      horarioConsulta: consulta.horarioConsulta
+    });  
+
     return this.httpClient
-              .put<Consulta>(this.baseUrl, consulta)
+              .put<Consulta>(this.baseUrl, dto.toJSON())
               .pipe(map((c: Consulta) => new Consulta(c)));
   }
 
