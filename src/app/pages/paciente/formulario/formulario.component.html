@@ -1,25 +1,30 @@
-<h1 class="mb-5  mt-3">PACIENTE - FORMULÁRIO</h1>
-<form [formGroup]="formulario" class="row">
-    <div class="col">
-        <label class="form-label" for="idNome">Nome do Paciente: </label>
-        <input formControlName="nome" id="idNome" class="form-control" type="text"
-            placeholder="Insira o nome completo" />
-    </div>
-
-    <div class="col">
-        <label class="form-label" for="idCpf">CPF: </label>
-        <input formControlName="cpf" id="idCpf" class="form-control" type="text" placeholder="Insira o CPF" />
-    </div>
-
-    <div class="col mb-3">
-        <label class="form-label" for="idDataNascimento">Data de Nascimento: </label>
-        <input class="form-control" formControlName="dataNascimento" id="idDataNascimento" type="date"
-            placeholder="Insira a data de nascimento" />
-    </div>
-
-    <div>
-        <button class="btn btn-secondary" type="button" (click)="limpar()">Limpar</button>
-        &nbsp;
-        <button class="btn btn-primary" type="button" (click)="enviar()">Enviar</button>
-    </div>
-</form>
+<div class="shadow p-3">
+    <h1 class="mb-5  mt-3 display-3 ">Paciente Formulário</h1>
+    <form [formGroup]="formulario" class="row">
+        
+        <div class="col">
+            <label class="form-label" for="idNome">Nome do Paciente: </label>
+            <input formControlName="nome" id="idNome" class="form-control" type="text"
+                placeholder="Insira o nome completo" />
+        </div>
+    
+        <div class="col">
+            <label class="form-label" for="idCpf">CPF: </label>
+            <input formControlName="cpf" id="idCpf" class="form-control" type="text" placeholder="Insira o CPF" />
+        </div>
+    
+        <div class="col mb-3">
+            <label class="form-label" for="idDataNascimento">Data de Nascimento: </label>
+            <input class="form-control" formControlName="dataNascimento" id="idDataNascimento" type="date"
+                placeholder="Insira a data de nascimento" />
+        </div>
+    
+        <div class="clearfix">
+            <div class="float-end">
+                <button class="btn btn-secondary" type="button" (click)="limpar()">Limpar</button>
+                &nbsp;
+                <button class="btn btn-primary" type="button" (click)="enviar()">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>
