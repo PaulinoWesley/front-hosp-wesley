@@ -1,48 +1,49 @@
-<div class="container">
-    <form [formGroup]="formulario">
-        <div class="row">
-            <!-- TODO: mudar pra uma coisa melhor -->
-            <h2>Pesquisa</h2>
-            <div>
-                <label>Nome</label>
-                <input type="text" id="nome" formControlName="nome"/>
-            </div>
-            <br>
-            <div>
-                <label>CPF</label>
-                <input type="text" id="cpf" formControlName="cpf"/>
-            </div>
-            <br>
-            <div>
-                <label>Data de Nascimento</label>
-                <input type="date" id="dataNascimento" formControlName="dataNascimento">
-            </div>
-        </div>
+<h2 class="mb-5 mt-3">PACIENTE PESQUISA</h2>
 
-        <div>
-            <button id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
-            <button id="btnLimpar" (click)="limpar()">Limpar</button>
+<form [formGroup]="formulario" class="row">
+    <div class="row mb-3">
+        <div class="col-4">
+            <label for="nome" class="form-label">Nome</label>
+            <input class="form-control" type="text" id="nome" formControlName="nome" />
         </div>
-    </form>
+        <div class="col-4">
+            <label for="cpf" class="form-label">CPF</label>
+            <input class="form-control" type="text" id="cpf" formControlName="cpf" />
+        </div>
+        <div class="col-4">
+            <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+            <input class="form-control" type="date" id="dataNascimento" formControlName="dataNascimento">
+        </div>
+    </div>
 
-    <table style="width: 90%" *ngIf="ehListagemVisivel">
-        <thead>
-            <tr>
-                <th scope="col">CPF</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Data de Nascimento</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Apagar</th>
-            </tr>
-        </thead>
-        <tbody>    
-            <tr *ngFor="let paciente of pacientes">
-                <th>{{ paciente.cpf }}</th>
-                <td>{{ paciente.nome }}</td>
-                <td>{{ paciente.dataNascimento | date: 'dd/MM/YYYY'}}</td>
-                <td><button (click)="editar(paciente)">Atualizar</button></td>
-                <td><button (click)="deletar(paciente)">Deletar</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-secondary" id="btnLimpar" (click)="limpar()">Limpar</button>
+            &nbsp;
+            <button class="btn btn-primary" id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-hover mt-3" *ngIf="ehListagemVisivel">
+    <thead>
+        <tr>
+            <th scope="col">CPF</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paciente of pacientes">
+            <th scope="row">{{ paciente.cpf }}</th>
+            <td>{{ paciente.nome }}</td>
+            <td>{{ paciente.dataNascimento | date: 'dd/MM/YYYY'}}</td>
+            <td>
+                <button class="btn btn-info" (click)="editar(paciente)">Atualizar</button>
+                &nbsp;
+                <button class="btn btn-warning" (click)="deletar(paciente)">Deletar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

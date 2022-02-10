@@ -47,7 +47,7 @@ export class FormularioComponent implements OnInit {
   }
 
   public limpar(): void { 
-    console.error('Implementar limpar');
+    this.formulario.reset();
   }
 
   public get ehEdicao(): boolean {
