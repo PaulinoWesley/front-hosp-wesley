@@ -1,5 +1,5 @@
-<div class="shadow p-3">
-    <h2 class="mb-5 mt-3 display-3">Paciente Pesquisa</h2>
+<div class="shadow p-4">
+    <h2 class="mb-5 mt-3 display-4">Paciente - Listagem</h2>
 
     <form [formGroup]="formulario" class="row">
         <div class="col-4">
@@ -17,11 +17,16 @@
 
         <div class="clearfix">
             <div class="float-end">
-                <button class="btn btn-secondary" id="btnLimpar" (click)="limpar()">Limpar</button>
+                <button type="button" class="btn btn-light shadow" id="btnLimpar" (click)="limpar()">
+                    <i class="bi bi-trash3"></i> Limpar</button>
                 &nbsp;
-                <button class="btn btn-primary" id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
+                <button class="btn btn-info shadow" id="btnPesquisar" (click)="pesquisar()">
+                    <i class="bi bi-search"></i> Pesquisar</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary shadow" (click)="moverParaCadastro()">
+                    <i class="bi bi-plus-lg"></i> Cadastrar Paciente</button>
             </div>
-        </div>
+        </div> 
     </form>
 </div>
 

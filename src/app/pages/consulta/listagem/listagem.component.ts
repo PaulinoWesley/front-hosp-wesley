@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Consulta } from '@entities';
 import { ConsultaService } from '@services';
 import { ConsultaFilterDto } from 'src/app/core/dtos';
@@ -16,7 +17,8 @@ export class ListagemComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: ListagemService
+    private service: ListagemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,5 +56,9 @@ export class ListagemComponent implements OnInit {
 
   public get ehListagemVisivel(): boolean {
     return !!this.consultas && this.consultas.length != 0;
+  }
+
+  public moverParaTelaDeCadastro(): void {
+    this.router.navigate(['/consulta/formulario']);
   }
 }

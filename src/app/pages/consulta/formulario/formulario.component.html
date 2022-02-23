@@ -1,18 +1,39 @@
-<h1>CONSULTA - FORMULÁRIO</h1>
-<form [formGroup]="formulario">
-    <div >
-        <label >CRM: </label>
-        <input formControlName="crm" id="idCrm" type="text" placeholder="Insira o CRM do Médico"/>
-        <br/>
-        <label>CPF: </label>
-        <input formControlName="cpf" id="idCpf" type="text" placeholder="Insira o CPF do Cliente"/>
-        <br/>
-        <label>HORARIO DE AGENDAMENTO: </label>
-        <input formControlName="horarioConsulta" id="idHorarioCOnsulta" type="text" placeholder="Insira o Horario da Consulta"/>
-    </div>
+<div class="shadow p-3">
 
-    <div>
-        <button type="button" (click)="enviar()">Enviar</button>
-        <button type="button" (click)="limpar()">Limpar</button>
-    </div>
-</form>
+    <h1 class="mb-5 mt-3 display-5">Consulta - {{ ehEdicao ? 'Editar' : 'Cadastrar' }}</h1>
+
+    <form [formGroup]="formulario" class="row">
+
+        <div class="col">
+            <label class="form-label" for="idCrm">CRM: </label>
+            <input class="form-control" formControlName="crm" id="idCrm" type="text"
+                placeholder="Insira o CRM do Médico" maxlength="6" />
+        </div>
+
+        <div class="col mb-3">
+            <label class="form-label" for="idCpf">CPF: </label>
+            <input class="form-control" formControlName="cpf" id="idCpf" type="text"
+                placeholder="Insira o CPF do Cliente" />
+        </div>
+
+        <div class="col mb-3">
+            <label class="form-label" for="idHorarioConsulta">HORARIO DE AGENDAMENTO: </label>
+            <input class="form-control" formControlName="horarioConsulta" id="idHorarioConsulta" type="datetime-local"
+                placeholder="Insira o Horario da Consulta" />
+        </div>
+
+        <div class="clearfixx">
+            <div class="float-end">
+                <button class="btn btn-light shadow" type="button" (click)="limpar()"><i class="bi bi-trash3"></i>
+                    Limpar</button>
+                &nbsp;
+                <button class="btn btn-info shadow" type="button" (click)="voltarParaListagem()"><i
+                        class="bi bi-reply"></i> Votlar</button>
+                &nbsp;
+                <button class="btn btn-primary shadow" type="button" (click)="enviar()"><i
+                        class="bi bi-check-circle"></i> Enviar</button>
+            </div>
+        </div>
+
+    </form>
+</div>

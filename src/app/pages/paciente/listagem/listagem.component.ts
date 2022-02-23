@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Paciente } from '@entities';
 import { ListagemService } from './listagem.service';
 
@@ -15,7 +16,8 @@ export class ListagemComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: ListagemService
+    private service: ListagemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,4 +60,7 @@ export class ListagemComponent implements OnInit {
       });
   }
 
+  public moverParaCadastro(): void {
+    this.router.navigate(['/paciente/formulario']);
+  }
 }

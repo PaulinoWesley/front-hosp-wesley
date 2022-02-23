@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Medico } from '@entities';
 import { Observable } from 'rxjs';
 import { ListagemService } from './listagem.service';
@@ -16,7 +17,8 @@ export class ListagemComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: ListagemService
+    private service: ListagemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,5 +60,9 @@ export class ListagemComponent implements OnInit {
         alert('Medico deletado com sucesso!');
         this.pesquisar();
       })
+  }
+
+  public moverParaTelaDeCadastro(): void {
+    this.router.navigate(['/medico/formulario'])
   }
 }
