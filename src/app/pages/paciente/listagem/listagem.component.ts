@@ -22,6 +22,7 @@ export class ListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarFormulario();
+    this.carregarDadosDoStorage();
   }
 
   public criarFormulario(): void {
@@ -44,6 +45,7 @@ export class ListagemComponent implements OnInit {
   }
 
   public editar(paciente: Paciente): void {
+    this.guardarDadosNoStorage();
     this.service.editar(paciente);
   }
 
@@ -61,6 +63,36 @@ export class ListagemComponent implements OnInit {
   }
 
   public moverParaCadastro(): void {
+    this.guardarDadosNoStorage();
     this.router.navigate(['/paciente/formulario']);
+  }
+
+  private guardarDadosNoStorage(): void {
+    this.saveValueToLocalStorage('nome');
+    this.saveValueToLocalStorage('cpf');
+    this.saveValueToLocalStorage('dataNascimento');
+  }
+
+  private saveValueToLocalStorage(formControlName: string): void {
+    if (this.formulario.get(formControlName)?.value) {
+      localStorage.setItem(`${formControlName}PacienteList`, this.formulario.get(formControlName)?.value);
+    }
+  }
+
+  private carregarDadosDoStorage(): void {
+    this.getValueFromLocalStorage('nome');
+    this.getValueFromLocalStorage('cpf');
+    this.getValueFromLocalStorage('dataNascimento');
+
+    this.pesquisar();
+  }
+
+  private getValueFromLocalStorage(formControlName: string): void {
+    const key = `${formControlName}PacienteList`;
+    const value = localStorage.getItem(key)
+    if (value) {
+      this.formulario.get(formControlName)?.setValue(value)
+    }
+    localStorage.removeItem(key);
   }
 }
