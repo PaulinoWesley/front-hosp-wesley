@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Medico } from '@entities';
-import { Observable } from 'rxjs';
 import { ListagemService } from './listagem.service';
 
 @Component({
@@ -16,11 +16,13 @@ export class ListagemComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: ListagemService
+    private service: ListagemService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.criarFormulario();
+    this.carregarDadosDoStorage();
   }
 
   private criarFormulario(): void {
@@ -44,6 +46,7 @@ export class ListagemComponent implements OnInit {
   }
 
   public editar(medico: Medico) {
+    this.guardarDadosNoStorage();
     this.service.editar(medico);
   }
 
@@ -58,5 +61,38 @@ export class ListagemComponent implements OnInit {
         alert('Medico deletado com sucesso!');
         this.pesquisar();
       })
+  }
+
+  public moverParaTelaDeCadastro(): void {
+    this.guardarDadosNoStorage();
+    this.router.navigate(['/medico/formulario'])
+  }
+
+  private saveValueInLocalStorage(formControlName: string): void {
+    if (this.formulario.get(formControlName)?.value) {
+      localStorage.setItem(`${formControlName}MedicoList`, this.formulario.get(formControlName)?.value);
+    }
+  }
+
+  private guardarDadosNoStorage(): void  {
+    this.saveValueInLocalStorage('crm');
+    this.saveValueInLocalStorage('nome');
+  }
+
+  private getValueFromLocalStorage(formControlName: string) : void {
+    const key = `${formControlName}MedicoList`;
+    const value = localStorage.getItem(key);
+
+    if (value) {
+      this.formulario.get(formControlName)?.setValue(value);
+    }
+    localStorage.removeItem(key);
+  }
+
+  private carregarDadosDoStorage(): void {
+    this.getValueFromLocalStorage('crm');
+    this.getValueFromLocalStorage('nome');
+
+    this.pesquisar();
   }
 }

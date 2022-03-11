@@ -29,7 +29,7 @@ export class FormularioComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       crm: null,
       cpf: null,
-      horarioConsulta: new Date
+      horarioConsulta: null,
     });
   }
 
@@ -63,6 +63,10 @@ export class FormularioComponent implements OnInit {
     this.formulario.get('cpf')?.setValue(this.consulta.paciente.cpf);
     this.formulario.get('crm')?.setValue(this.consulta.medico.crm);
     this.formulario.get('horarioConsulta')?.setValue(this.consulta.horarioConsultaFormatado);
+  }
+
+  public voltarParaListagem(): void {
+    this.router.navigate(['/consulta']);
   }
 
 }

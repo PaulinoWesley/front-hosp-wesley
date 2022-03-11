@@ -57,4 +57,12 @@ export class FormularioComponent implements OnInit {
   private patchMedicoToFormulario() {
     this.formulario.patchValue(this.medico);
   }
+
+  public limpar(): void {
+    this.formulario.reset();
+  }
+
+  public voltarParaListagem(): void {
+    this.router.navigate(['/medico']);
+  }
 }

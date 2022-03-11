@@ -10,6 +10,7 @@ import { FormularioService } from './formulario.service';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+
   public formulario: FormGroup = new FormGroup({});
   public paciente = new Paciente();
   constructor(
@@ -46,8 +47,8 @@ export class FormularioComponent implements OnInit {
     this.formulario.get('dataNascimento')?.setValue(this.paciente.dataNascimentoJson);
   }
 
-  public limpar(): void { 
-    console.error('Implementar limpar');
+  public limpar(): void {
+    this.formulario.reset();
   }
 
   public get ehEdicao(): boolean {
@@ -55,12 +56,18 @@ export class FormularioComponent implements OnInit {
   }
 
   public enviar(): void {
-    const paciente =  new Paciente(this.formulario.value);
+    const paciente = new Paciente(this.formulario.value);
 
     this.service.salvar(paciente, this.ehEdicao).subscribe((pacienteSalvo: Paciente) => {
       alert(`Paciente salvo com sucesso!! nome = ${pacienteSalvo.primeiroNome} cpf = ${pacienteSalvo.cpf}`);
-      this.router.navigate(['paciente']);
+      // TODO: Verificar se está salvando a data de nascimento corretamente. 
+
+      this.voltarParaListagem();
     });
+  }
+
+  public voltarParaListagem() {
+    this.router.navigate(['/paciente']);
   }
 
 }

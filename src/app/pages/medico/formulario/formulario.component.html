@@ -1,14 +1,44 @@
-<h1>MÉDICO - FORMULÁRIO</h1>
-<form [formGroup]="formulario">
-    <div >
-        <label >Nome do Médico: </label>
-        <input formControlName="nome" id="idNome" type="text" placeholder="Insira o nome completo"/>
-        <br/>
-        <label>CRM: </label>
-        <input formControlName="crm" id="crm" type="text" placeholder="Insira o CRM"/>
-    </div>
-
-    <div>
-        <button type="button" (click)="enviar()">Enviar</button>
-    </div>
-</form>
+<div class="shadow p-3">
+    
+    <h1 class="mb-5 mt-3 display-5">Médico - {{ ehEdicao ? 'Editar' : 'Cadastrar' }}</h1>
+    
+    <form [formGroup]="formulario" class="row">
+        
+        <div class="col">
+            <label class="form-label" for="idNome">Nome do Médico: </label>
+            <input 
+            class="form-control" 
+            formControlName="nome" 
+            id="idNome" 
+            type="text" 
+            placeholder="Insira o nome do médico"
+            />
+        </div>
+        
+        <div class="col mb-3">
+            <label class="form-label" for="crm"> CRM: </label>
+            <input 
+                class="form-control" 
+                formControlName="crm" 
+                id="crm" 
+                type="text"
+                maxlength="6"
+                placeholder="Insira o CRM do médico"
+            />
+        </div>
+        
+        <div class="clearfix">
+            <div class="float-end">
+                <button type="button" class="btn btn-light shadow" (click)="limpar()"> 
+                    <i class="bi bi-trash3"></i> Limpar</button>
+                &nbsp;
+                <button type="button" class="btn btn-info" (click)="voltarParaListagem()">
+                    <i class="bi bi-reply"></i> Voltar</button>
+                &nbsp;
+                <button type="button" class="btn btn-primary" (click)="enviar()">
+                    <i class="bi bi-plus-circle"></i> Enviar</button>
+            </div>
+        </div>
+        
+    </form>
+</div>

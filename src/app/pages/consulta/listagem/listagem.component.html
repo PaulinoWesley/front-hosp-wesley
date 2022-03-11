@@ -1,40 +1,47 @@
-<div class="container">
-    <form [formGroup]="formulario">
-        <div class="row">
-            <h2>Pesquisa</h2>
-            <div>
-                <label>Paciente</label>
-                <input type="text" id="paciente" formControlName="cpfPaciente"/>
-            </div>
-            <br>
-            <div>
-                <label>Médico</label>
-                <input type="text" id="medico" formControlName="crmMedico"/>
-            </div>
-            <br>
+<div class="shadow p-3">
+    <form [formGroup]="formulario" class="row">
+
+        <h2 class="mb-5 mt-3 display-5">Pesquisar Consultas</h2>
+        <div class="col">
+            <label class="form-label" for="paciente"> Cpf do Paciente</label>
+            <input class="form-control" type="text" id="paciente" formControlName="cpfPaciente" />
         </div>
 
-        <div>
-            <button id="btnPesquisar" (click)="pesquisar()">Pesquisar</button>
-            <button id="btnLimpar" (click)="limpar()">Limpar</button>
+        <div class="col mb-3">
+            <label class="form-label" for="medico"> CRM do Médico</label>
+            <input class="form-control" type="text" id="medico" maxlength="6" formControlName="crmMedico" />
+        </div>
+
+        <div class="clearfix">
+            <div class="float-end">
+                <button class="btn btn-light shadow" id="btnLimpar" (click)="limpar()"><i class="bi bi-trash3"></i> Limpar</button>
+                &nbsp;
+                <button class="btn btn-info shadow" id="btnPesquisar" (click)="pesquisar()"><i class="bi bi-search"></i> Pesquisar</button>
+                &nbsp;
+                <button class="btn btn-primary shadow" (click)="moverParaTelaDeCadastro()"><i class="bi bi-plus-lg"></i> Adicionar Consulta</button>
+            </div>
         </div>
     </form>
 
-    <table style="width: 90%" *ngIf="ehListagemVisivel">
+    <table class="table table-hover mt-3" *ngIf="ehListagemVisivel">
         <thead>
             <tr>
                 <th scope="col">Medico</th>
                 <th scope="col">Paciente</th>
                 <th scope="col">Horario Consulta</th>
+                <th scope="col" class="text-center">Ações</th>
             </tr>
         </thead>
-        <tbody>    
+        <tbody>
             <tr *ngFor="let consulta of consultas">
-                <th>{{ consulta.medico.nome }}</th>
+                <th>{{ consulta.medico.nome | titlecase }}</th>
                 <td>{{ consulta.paciente.cpf + ' - ' + consulta.paciente.nome }}</td>
-                <td>{{ consulta.horarioConsulta }}</td>
-                <td><button (click)="editar(consulta)">Atualizar</button></td>
-                <td><button (click)="deletar(consulta)"> Deletar</button></td>
+                <td>{{ consulta.horarioConsulta | date:' hh:mm - dd/MM/yyyy' }}</td>
+                <td class="text-end">
+                    <button class="btn btn-info" (click)="editar(consulta)">Atualizar</button>
+                    &nbsp;
+                    <button class="btn btn-warning" (click)="deletar(consulta)"> Deletar</button>
+                </td>
             </tr>
         </tbody>
     </table>

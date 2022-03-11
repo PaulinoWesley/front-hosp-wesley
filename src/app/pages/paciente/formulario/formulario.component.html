@@ -1,18 +1,35 @@
-<h1>PACIENTE - FORMULÁRIO</h1>
-<form [formGroup]="formulario">
-    <div >
-        <label >Nome do Paciente: </label>
-        <input formControlName="nome" id="idNome" type="text" placeholder="Insira o nome completo"/>
-        <br/>
-        <label>CPF: </label>
-        <input formControlName="cpf" id="idCpf" type="text" placeholder="Insira o CPF"/>
-        <br/>
-        <label>Data de Nascimento: </label>
-        <input formControlName="dataNascimento" id="idDataNascimento" type="date" placeholder="Insira a data de nascimento"/>
-    </div>
+<div class="shadow p-3">
+    <h1 class="mb-5  mt-3 display-34">Paciente - {{ ehEdicao ? 'Editar' : 'Cadastrar'}}</h1>
+    <form [formGroup]="formulario" class="row">
 
-    <div>
-        <button type="button" (click)="limpar()">Limpar</button>
-        <button type="button" (click)="enviar()">Enviar</button>
-    </div>
-</form>
+        <div class="col">
+            <label class="form-label" for="idNome">Nome do Paciente: </label>
+            <input formControlName="nome" id="idNome" class="form-control" type="text"
+                placeholder="Insira o nome completo" />
+        </div>
+
+        <div class="col">
+            <label class="form-label" for="idCpf">CPF: </label>
+            <input formControlName="cpf" id="idCpf" class="form-control" type="text" placeholder="Insira o CPF" />
+        </div>
+
+        <div class="col mb-3">
+            <label class="form-label" for="idDataNascimento">Data de Nascimento: </label>
+            <input class="form-control" formControlName="dataNascimento" id="idDataNascimento" type="date"
+                placeholder="Insira a data de nascimento" />
+        </div>
+
+        <div class="clearfix">
+            <div class="float-end">
+                <button class="btn btn-light shadow" type="button" (click)="limpar()">
+                    <i class="bi bi-trash3"></i> Limpar</button>
+                &nbsp;
+                <button type="button" class="btn btn-info shadow" (click)="voltarParaListagem()">
+                    <i class="bi bi-reply"></i> Voltar</button>
+                &nbsp;
+                <button class="btn btn-primary shadow" type="button" (click)="enviar()">
+                    <i class="bi bi-plus-circle"></i> Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>
